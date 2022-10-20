@@ -4,8 +4,9 @@ try {
     //Connexió a la BBDD
     $myCon = new PDO('mysql:host=localhost; dbname=products', 'root', '');
     //Creem la consulta sql
-    $sql ="SELECT * FROM product";
+    $sql ="SELECT * FROM products";
 
+    //En caso de error
 } catch (PDOException $e) {
     echo "error de connexió: " . $e->getMessage() . "<br/>";
     die();
@@ -27,16 +28,16 @@ try {
     </thead>
     <tbody>
     //S’envia la query a la BBDD i es guarda la informació a product
-    <?php foreach ($myCon->query($sql) as $i => $products){ ?>
+    <?php foreach ($myCon->query($sql) as $i => $product){ ?>
         <tr>
             <th scope="row"><?php echo $i +1 ?></th> <!-- augmentem el index i -->
-            <td><?php echo $products['NumID'] ?></td> <!--Accedim a NumID -->
-            <td><?php echo $products['Name'] ?></td> <!--Accedim a Name-->
-            <td><?php echo $products['Description'] ?></td> <!--Accedim a Description-->
-            <td><?php echo $products['Price'] ?></td> <!--Accedim a Price -->
-            <td><?php echo $products['Quantity'] ?></td> <!--Accedim a Quantity -->
-            <td><a href="edit.php?id=<?php echo $products['NumID']?>"><button type="button" class="btn btn-outline-primary">Edit</button></a></td>
-            <td><a href="delete.php?id=<?php echo $products['NumID']?>"><button type="button" class="btn btn-outline-danger">Delete</button></a></td>
+            <td><?php echo $product['NumID'] ?></td> <!--Accedim a NumID -->
+            <td><?php echo $product['Name'] ?></td> <!--Accedim a Name-->
+            <td><?php echo $product['Description'] ?></td> <!--Accedim a Description-->
+            <td><?php echo $product['Price'] ?></td> <!--Accedim a Price -->
+            <td><?php echo $product['Quantity'] ?></td> <!--Accedim a Quantity -->
+            <td><a href="edit.php?id=<?php echo $product['NumID']?>"><button type="button" class="btn btn-outline-primary">Edit</button></a></td>
+            <td><a href="delete.php?Id_Productos<?php echo $product['NumID']?>"><button type="button" class="btn btn-outline-danger">Delete</button></a></td>
         </tr>
     <?php } ?>
     </tbody>
@@ -50,16 +51,16 @@ try {
                 <!-- A través del mètode POST li enviem les dades del formulari a l'arxiu add_product.php -->
                 <form action="add_product.php" method="POST">
                     <div class=form-group>
-                        <input type="text" name="name" class="form-control" placeholder="Name" autofocus>
+                        <input type="text" name="name" class="form-control" placeholder="name" autofocus>
                     </div>
                     <div class=form-group>
-                        <textarea name="description" rows="3" class="form-control" placeholder="Description"></textarea>
+                        <textarea name="description" rows="3" class="form-control" placeholder="description"></textarea>
                     </div>
                     <div class=form-group>
                         <input type="text" name="price" class="form-control" placeholder="price">
                     </div>
                     <div class=form-group>
-                        <input type="text" name="quantity" class="form-control" placeholder="Quantity">
+                        <input type="text" name="quantity" class="form-control" placeholder="quantity">
                     </div>
                     <input type="submit" class="btn btn-success btn-block" name="add_product" value="+ Producte">
                 </form>

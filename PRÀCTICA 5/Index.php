@@ -37,7 +37,7 @@ try {
             <td><?php echo $products['Price'] ?></td> <!--Accedim a Price -->
             <td><?php echo $products['Quantity'] ?></td> <!--Accedim a Quantity -->
             <td><a href="edit.php?id=<?php echo $products['NumID']?>"><button type="button" class="btn btn-outline-primary">Edit</button></a></td>
-            <td><a href="eliminar.php?ids=<?php echo $products['NumID']?>"><button type="button" class="btn btn-outline-danger">Delete</button></a></td>
+            <td><a href="eliminar.php?id=<?php echo $products['NumID']?>"><button type="button" class="btn btn-outline-danger">Delete</button></a></td>
         </tr>
     <?php } ?>
     </tbody>

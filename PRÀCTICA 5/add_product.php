@@ -1,4 +1,4 @@
-<?php
+<?
 
 //Declaramos las variables y les assignamos los datos del formulario
 $nombre = $_POST["name"];
@@ -7,10 +7,12 @@ $precio = $_POST["price"];
 $cantidad = $_POST["quantity"];
 // Consulta para añadir los productos
 $insertar = "INSERT INTO products(Name, Description, Price, q_sold)
-    VALUES ('$nombre', '$descripcion' , '$precio', '$cantidad')";
+
+VALUES ('$nombre', '$descripcion' , '$precio', '$cantidad')";
+
 $consulta = $this->connect()->prepare($insertar);
 //ejecutamos la consulta
-$consulta->execute([$insertar]);
+$consulta->query([$insertar]);
 
 try {
     //Connexió a la BBDD
@@ -24,4 +26,7 @@ try {
     die();
 }
 
+    
+
 ?>
+

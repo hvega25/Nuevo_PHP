@@ -1,4 +1,5 @@
 <?php
+
 try {
     //Connexió a la BBDD
     $myCon = new PDO('mysql:host=localhost; dbname=products', 'root', '');
@@ -19,8 +20,10 @@ function addProduct(){
     $cantidad = $_POST["quantity"];
     // Consulta para añadir los productos
     $insertar = "INSERT INTO products(Name, Description, Price, q_sold)
+    
     VALUES ('$nombre', '$descripcion' , '$precio', '$cantidad')";
     
+    $consulta = $this->connect()->prepare($sql);
     //ejecutamos la consulta
     $consulta->execute([$insertar]);
     

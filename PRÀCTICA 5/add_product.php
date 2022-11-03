@@ -1,4 +1,4 @@
-<?
+<?php
 
 //Declaramos las variables y les assignamos los datos del formulario
 $nombre = $_POST["name"];

@@ -1,10 +1,15 @@
 <?php
+$id = $_GET['id'];
 $myCon = new PDO('mysql:host=localhost; dbname=products', 'root', '');
-include 'Index.php';
-$id = $_GET['NumID'];
-$eliminar = "DELETE FROM products WHERE Id_Productos = '$id'";
+$eliminar = "DELETE FROM products WHERE NumID = '$id'";
 $elimina = $myCon->query($eliminar);
-header("location:Index.php");
-$myCon->close();
+//header("location:Index.php");
 ?>
+
+
+
+
+
+
+
 
